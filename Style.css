@@ -4,8 +4,6 @@
     display: flex;
     align-items: center;
     height: 80px;
-    padding-top: 5px;
-    padding-bottom: 5px;
     border-bottom: 1px solid #2a2a2a;
 }
 
@@ -17,13 +15,19 @@
     margin-left: 2%;
 }
 
-.home, .how-to-use, .about {
+.home, .how-it-works, .about {
     cursor: pointer;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
     width: 8%;
 }
 
+.about {
+    margin-left: 30px;
+}
 
-.navbar a:hover {
+#navbar a:hover {
     background-color: #333;
 }
 
@@ -34,4 +38,55 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #1A1A1A;
+    background-image: url("Hero.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#hero-tab {
+    width: 50%;
+    height: 550px;
+    background-color: #1A1A1A;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: 50px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#hero-tab h1 , #hero-tab p {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+#hero-tab h1 {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+#hero-tab button {
+    width: 200px;
+    height: 50px;
+    background-color:white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 30px;
+    margin-left: 280px;
+    cursor: pointer;
+}
+
+#hero-tab button:hover {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+}
+
+.hero-features h3 {
+    margin : 0;
+}
+.hero-features p , .hero-features li{
+    margin-top : 20px;
 }
