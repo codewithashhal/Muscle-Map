@@ -106,7 +106,7 @@ body {
 
 #input-section {
     width: 100%;
-    height: 800px;
+    height: 1200px;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -114,22 +114,105 @@ body {
 }
 
 .input-card {
-    height: 650px;
-    width: 80%;
+    height: 900px;
+    width: 78%;
     background-color: #1a1a1a;
     border-radius: 15px;
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap : 50px;
 }
 
 .input-card h1 {
     font-size: 50px;
     margin-top: 50px;
+    align-self: center;
 }
 
-.input-form {
-    gap: 20px;
+.input-form label {
+    font-size: 30px;
+    margin-left: 60px; 
 }
 
+#weight {
+    display: block;
+    width: 75%;
+    margin: 25px auto;
+    padding: 15px;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.level-btns button , .Fitness-btn button{
+    margin:30px auto;
+    margin-left: 70px;
+    padding: 10px;
+    width: 300px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.level-btns button:hover , .Fitness-btn button:hover {
+    background-color: #1a1a1a;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#beginner {
+    background-color: #4CAF50;
+    transition: all 0.3s ease;
+}
+#intermediate {
+    background-color: #c87d0c;
+    transition: all 0.3s ease;
+}
+#expert {
+    background-color: #F44336;
+    transition: all 0.3s ease;
+}
+
+#beginner:hover {
+    background-color: #06ec11;
+    transform:translateY(+2px);
+    box-shadow: 0px 4px 8px;
+}
+
+#intermediate:hover {
+    background-color: #f89808;
+    transform:translateY(+2px);
+    box-shadow: 0px 4px 8px;
+}
+
+#expert:hover {
+    background-color: red;
+    transform:translateY(+2px);
+    box-shadow: 0px 4px 8px;
+}
+
+
+#generate-btn {
+    width: 300px;
+    height: 50px;
+    background-color:white;
+    align-self: center;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#generate-btn:hover {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}

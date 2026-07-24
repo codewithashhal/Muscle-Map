@@ -41,21 +41,26 @@
         <div class="input-card">
             <h1>Tell us about yourself</h1>
             <form class = "input-form">
-                <label for="weight">Body Weight (Kg)</label>
-                <input type="number" id="weight" name="weight" required>
+                <label for="weight">Body Weight (Kg):</label>
+                <input type="number" id="weight" name="weight" placeholder="Enter your weight (e.g. 75 Kg)" required>
             </form>
             <form class = "input-form">
-                <label for="level">Fitness Level</label>
-                <button class = "beginner-btn">Beginner</button>
-                <button class = "intermediate-btn">Intermediate</button>
-                <button class = "expert-btn">Expert</button>
+                <label for="level">Fitness Level:</label>
+                <div class = "level-btns">
+                <button id = "beginner">Beginner</button>
+                <button id = "intermediate">Intermediate</button>
+                <button id = "expert">Expert</button>
+                </div>
             </form>
             <form class = "input-form">
-                <label for="goal">Fitness Goal</label>
-                <button class = "strength-btn">Strength</button>
-                <button class = "hypertrophy-btn">Hypertrophy</button>
-                <button class = "fat-loss-btn">Fat Loss</button>
+                <label for="goal">Fitness Goal:</label>
+                <div class="Fitness-btn">
+                <button class = "Fitness-btn" id = "strength">Strength</button>
+                <button class = "Fitness-btn" id = "hypertrophy">Hypertrophy</button>
+                <button class = "Fitness-btn" id = "fat-loss">Fat Loss</button>
+                </div>
             </form>
+            <button id="generate-btn">Generate Workout</button>
         </div>
     </div>
 
