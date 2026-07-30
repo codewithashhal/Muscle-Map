@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css">
 </head>
 <body>
-    <script src="script.js"></script>
     <div id="navbar">
         <div class="navbar_logo">
             <i class="fa-solid fa-dumbbell"></i>
@@ -40,30 +39,30 @@
     <div id="input-section">
         <div class="input-card">
             <h1>Tell us about yourself</h1>
-            <form class = "input-form">
-                <label for="weight">Body Weight (Kg):</label>
-                <input type="number" id="weight" name="weight" placeholder="Enter your weight (e.g. 75 Kg)" required>
-            </form>
-            <form class = "input-form">
-                <label for="level">Fitness Level:</label>
-                <div class = "level-btns">
+            <!-- Input Form -->
+            <!-- BodyWeight  -->
+            <label class = "input-form"for="weight">Body Weight (Kg):</label>
+            <input type="number" id="weight" name="weight" placeholder="Enter your weight (e.g. 75 Kg)" required>
+            <!-- Fitness Level -->
+            <label class = "input-form" for="level">Fitness Level:</label>
+
+            <div class = "level-btns">
                 <button id = "beginner">Beginner</button>
                 <button id = "intermediate">Intermediate</button>
                 <button id = "expert">Expert</button>
-                </div>
-            </form>
-            <form class = "input-form">
-                <label for="goal">Fitness Goal:</label>
-                <div class="Fitness-btn">
-                <button class = "Fitness-btn" id = "strength">Strength</button>
-                <button class = "Fitness-btn" id = "hypertrophy">Hypertrophy</button>
-                <button class = "Fitness-btn" id = "fat-loss">Fat Loss</button>
-                </div>
-            </form>
+            </div>
+            <!-- Goal Selection -->
+            <label class = "input-form" for="goal">Fitness Goal:</label>
+            <div class="Fitness-btn">
+                <button id = "strength">Strength</button>
+                <button id = "hypertrophy">Hypertrophy</button>
+                <button id = "fat-loss">Fat Loss</button>
+            </div>
+
             <button id="generate-btn">Generate Workout</button>
         </div>
     </div>
-
+    <script src="script.js"></script>
 </body>
 </html>
             
