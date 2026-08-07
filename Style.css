@@ -221,3 +221,34 @@ body {
     box-shadow: 0px 4px 8px;
     transform:translateY(+2px);
 }
+
+/* Result Section */
+
+#results-section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.muscle {
+    display : flex;
+    flex-direction : row;
+    gap: 5rem ;
+}
+
+#results-section h1 {
+    color : white;
+    font-size : 5rem;
+    margin-bottom : 2rem;
+}
+
+.card {
+    height : 30rem;
+    width : 20rem;
+    background-color: #1A1A1A;
+    border-radius: 10px;
+}

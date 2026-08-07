@@ -6,7 +6,7 @@ const container_level = document.querySelectorAll(".level-btns button");
 const container_goal = document.querySelectorAll(".Fitness-btn button");
 
 const exercises = [
-  // LEGS
+  Legs = [
   {
     name: "Barbell Back Squat", category: "compound", muscle: "legs",
     level: ["beginner", "intermediate", "expert"], goal: ["strength", "hypertrophy", "fatloss"],
@@ -95,8 +95,8 @@ const exercises = [
     intermediate: { fatloss: "4x15", hypertrophy: "4x12" },
     expert:       { fatloss: "4x20", hypertrophy: "5x15" }
   }
-},
-  // CHEST
+}],
+  chest = [
   {
     name: "Push Up", category: "calisthenic", muscle: "chest",
     level: ["beginner", "intermediate", "expert"], goal: ["strength", "hypertrophy", "fatloss"],
@@ -117,8 +117,9 @@ const exercises = [
   },
   {
     name: "Incline Dumbbell Press", category: "compound", muscle: "chest",
-    level: ["intermediate", "expert"], goal: ["strength", "hypertrophy"],
+    level: ["beginner","intermediate", "expert"], goal: ["strength", "hypertrophy"],
     sets: {
+        beginner: {strength: "4x8" , hypertropphy: "4x12"},
         intermediate: { strength: "4x8", hypertrophy: "4x12" },
         expert:       { strength: "5x6", hypertrophy: "5x12" }
     }
@@ -146,17 +147,9 @@ const exercises = [
     intermediate: { strength: "3x8",  hypertrophy: "3x12", fatloss: "3x18" },
     expert:       { strength: "4x12", hypertrophy: "4x15", fatloss: "4x20" }
   }
-},
-{
-  name: "Diamond Push Up", category: "calisthenic", muscle: "chest",
-  level: ["intermediate", "expert"], goal: ["strength", "hypertrophy"],
-  sets: {
-    intermediate: { strength: "3x8",  hypertrophy: "3x12" },
-    expert:       { strength: "4x10", hypertrophy: "4x15" }
-  }
-},
+}],
 
-  // BACK
+  back = [
   {
     name: "Pull Up", category: "calisthenic", muscle: "back",
     level: ["intermediate", "expert"], goal: ["strength", "hypertrophy"],
@@ -216,8 +209,8 @@ const exercises = [
         intermediate: { strength: "4x8",  hypertrophy: "4x12", fatloss: "4x18" },
         expert:       { strength: "4x12", hypertrophy: "5x12", fatloss: "5x20" }
     }
-},
-  // SHOULDERS
+}],
+  shoulders = [
   {
     name: "Overhead Barbell Press", category: "compound", muscle: "shoulders",
     level: ["beginner", "intermediate", "expert"], goal: ["strength", "hypertrophy", "fatloss"],
@@ -277,8 +270,8 @@ const exercises = [
             intermediate: { fatloss: "3x30s", hypertrophy: "3x25s" },
             expert:       { fatloss: "4x40s", hypertrophy: "4x30s" }
     }
-},
-  // ARMS
+}],
+  arms = [
   {
     name: "Dumbbell Bicep Curl", category: "bodybuilding", muscle: "arms",
     level: ["beginner", "intermediate", "expert"], goal: ["strength", "hypertrophy", "fatloss"],
@@ -329,8 +322,8 @@ const exercises = [
             beginner:     { strength: "3x5", hypertrophy: "3x5" },
             intermediate: { strength: "4x6", hypertrophy: "4x8" }
 }
-},
-  // CORE
+}],
+  core = [
   {
     name: "Plank", category: "calisthenic", muscle: "core",
     level: ["beginner", "intermediate", "expert"], goal: ["strength", "hypertrophy", "fatloss"],
@@ -373,7 +366,7 @@ const exercises = [
         intermediate: { fatloss: "3x30", hypertrophy: "3x20" },
         expert:       { fatloss: "4x40", hypertrophy: "4x25" }
     }
-},
+}]
 
 ];
 
