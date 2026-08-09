@@ -119,7 +119,7 @@ const exercises = [
     name: "Incline Dumbbell Press", category: "compound", muscle: "chest",
     level: ["beginner","intermediate", "expert"], goal: ["strength", "hypertrophy"],
     sets: {
-        beginner: {strength: "4x8" , hypertropphy: "4x12"},
+        beginner: {strength: "4x8" , hypertrophy: "4x12"},
         intermediate: { strength: "4x8", hypertrophy: "4x12" },
         expert:       { strength: "5x6", hypertrophy: "5x12" }
     }
@@ -375,7 +375,27 @@ function Workout(level, goal, weight) {
     this.goal = goal;
     this.weight = weight;
 
-    this.exercises = exercises.filter(exercise => exercise.level.includes("beginner") && exercise.goal.includes("strength"));
+  const Muscle = {
+    Legs: Legs,
+    Chest: chest,
+    Back: back,
+    Shoulders: shoulders,
+    Arms: arms,
+    Core: core
+  }
+  for (let i = 0; i < Object.keys(Muscle).length; i++) {
+    let muscle = Object.keys(Muscle)[i];
+  	let primary = Muscle[muscle].filter(exercise => exercise.category === goal && exercise.level.includes(level) && exercise.goal.includes(goal));
+	if (primary.length >= 3) {
+		let result = primary.slice(0, 3);
+		console.log(primary);
+		console.log(result);
+	} else {
+		let secondary = Muscle[muscle].filter(exercise => (exercise.category === "calisthenic" || exercise.category === "compound" || exercise.category === "bodybuilding") && exercise.level.includes(level) && (exercise.goal.includes("strength") || exercise.goal.includes("hypertrophy") || exercise.goal.includes("fatloss")) && !primary.includes(exercise));
+		let result = primary.concat(secondary);
+		console.log(result.slice(0, 3));
+	}
+  }
 
 }
 
