@@ -106,7 +106,7 @@ body {
 
 #input-section {
     width: 100%;
-    height: 1000px;
+    min-height: 1050px;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -114,14 +114,14 @@ body {
 }
 
 .input-card {
-    height: 890px;
+    height: 930px;
     width: 78%;
     background-color: #1a1a1a;
     border-radius: 15px;
     color: white;
     display: flex;
     flex-direction: column;
-    gap : 30px;
+    gap : 12px;
 }
 
 .input-card h1 {
@@ -147,7 +147,7 @@ body {
     border-radius: 4px;
 }
 
-.level-btns button , .Fitness-btn button{
+.level-btns button , .Fitness-btn button , .exercise-btn button{
     margin:30px auto;
     margin-left: 70px;
     padding: 10px;
@@ -156,7 +156,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.level-btns button:hover , .Fitness-btn button:hover {
+.level-btns button:hover , .Fitness-btn button:hover, .exercise-btn button:hover {
     background-color: #1a1a1a;
     color: white;
     font-weight: bold;

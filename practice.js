@@ -1,13 +1,6 @@
-let level = "";
-let goal = "";
-let weight;
-
-const container_level = document.querySelectorAll(".level-btns button");
-const container_goal = document.querySelectorAll(".Fitness-btn button");
-const container_exercise = document.querySelectorAll(".exercise-btn button");
 
 const exercises = [
-  Legs = [
+  legs = [
   {
     name: "Barbell Back Squat", category: "compound", muscle: "legs",
     level: ["beginner", "intermediate", "expert"], goal: ["strength", "hypertrophy", "fatloss"],
@@ -120,7 +113,7 @@ const exercises = [
     name: "Incline Dumbbell Press", category: "compound", muscle: "chest",
     level: ["beginner","intermediate", "expert"], goal: ["strength", "hypertrophy"],
     sets: {
-        beginner: {strength: "4x8" , hypertrophy: "4x12"},
+        beginner: {strength: "4x8" , hypertropphy: "4x12"},
         intermediate: { strength: "4x8", hypertrophy: "4x12" },
         expert:       { strength: "5x6", hypertrophy: "5x12" }
     }
@@ -353,7 +346,7 @@ const exercises = [
   {
     name: "Russian Twist", category: "calisthenic", muscle: "core",
     level: ["beginner", "intermediate", "expert"], goal: ["fatloss", "hypertrophy"],
-    sets: { 
+    sets: {
         beginner:     { fatloss: "3x20", hypertrophy: "3x15" },
         intermediate: { fatloss: "3x30", hypertrophy: "3x20" },
         expert:       { fatloss: "4x40", hypertrophy: "4x25" }
@@ -368,93 +361,40 @@ const exercises = [
         expert:       { fatloss: "4x40", hypertrophy: "4x25" }
     }
 }]
-
 ];
-let heading = document.querySelectorAll(".title");
-let sets = document.querySelectorAll(".sets");
-let reps = document.querySelectorAll(".reps");
 
-let count = -3;
-function generateOutput(result) {
-  count += 3;
-  for (let i = 0; i < result.length; i++) {
-    heading[count + i].innerText = result[i].name;
-    let setDetails = result[i].sets[level][goal];
-    let valueCount = setDetails.split("x");
-    console.log(`Sets and reps for ${result[i].name}:`, valueCount);
-    sets[count + i].innerText = valueCount[0];
-    reps[count + i].innerText = valueCount[1];
-  }
+let actualWeight = document.querySelector("#weight");
+let submitButton = document.querySelector("#submit");
+let weight;
+submitButton.addEventListener("click", () => {
+    weight = actualWeight.value;
+})
+
+level = "beginner";
+let goal = "strength";
+let type = "calisthenic";
+
+let Muscle = {
+	legs: legs,
+	chest: chest,
+	back: back,
+	shoulders: shoulders,
+	arms: arms,
+	core: core
+};
+let category, primary, secondary, lastly;
+for (let i = 0; i < Object.keys(Muscle).length; i++) {
+	let muscle = Object.keys(Muscle)[i];
+	primary = Muscle[muscle].filter(exercise => exercise.category === type && exercise.level.includes(level) && exercise.goal.includes(goal));
+	if (primary.length >= 3) {
+		let result = primary.slice(0, 3);
+		console.log(primary);
+		console.log(result);
+	} else {
+		let result = primary.slice(0, primary.length);
+		secondary = Muscle[muscle].filter(exercise => (exercise.category === "calisthenic" || exercise.category === "compound" || exercise.category === "bodybuilding") && exercise.level.includes(level) && (exercise.goal.includes("strength") || exercise.goal.includes("hypertrophy") || exercise.goal.includes("fatloss")) && !primary.includes(exercise));
+		result = primary.concat(secondary);
+		console.log(secondary);
+		console.log(result.slice(0, 3));
+	}
 }
-
-function Workout(level, goal, type, weight) {
-  this.level = level;
-  this.goal = goal;
-  this.type = type;
-  this.weight = weight;
-
-  const Muscle = {
-    Chest: chest,
-    Back: back,
-    Shoulders: shoulders,
-    Arms: arms,
-    Legs: Legs,
-    Core: core
-  }
-  for (let i = 0; i < Object.keys(Muscle).length; i++) {
-    let muscle = Object.keys(Muscle)[i];
-    let primary = Muscle[muscle].filter(exercise => exercise.category === type && exercise.level.includes(level) && exercise.goal.includes(goal));
-    if (primary.length >= 3) {
-      let result = primary.slice(0, 3);
-      console.log(`Selected exercises for ${muscle}:`, result.slice(0, 3));
-      generateOutput(result);
-    } else {
-      let secondary = Muscle[muscle].filter(exercise => (exercise.category === "calisthenic" || exercise.category === "compound" || exercise.category === "bodybuilding") && exercise.level.includes(level) && (exercise.goal.includes(goal)) && !primary.includes(exercise));
-      let result = primary.concat(secondary);
-      console.log(`Selected exercises for ${muscle}:`, result.slice(0, 3));
-      generateOutput(result.slice(0, 3));
-    }
-    
-  }
-
-}
-
-container_level.forEach(button => {
-    button.addEventListener("click", (e) => {
-        container_level.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-        level = button.id;
-        console.log(level);
-    })
-})
-
-container_goal.forEach(button => {
-    button.addEventListener("click", (e) => {
-        container_goal.forEach(btn => btn.classList.remove("active"));
-        button.classList.add("active");
-        goal = button.id;
-        console.log(goal);
-    })
-})
-
-container_exercise.forEach(button => {
-    button.addEventListener("click", (e) => {
-      container_exercise.forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
-      exerciseType = button.id;
-      console.log(exerciseType);
-    })
-})
-let generateBtn = document.getElementById("generate-btn");
-let weightInput = document.getElementById("weight");
-
-generateBtn.addEventListener("click", (e) => {
-    if (weightInput.value === "" || level === "" || goal === "") {
-        alert("Please fill in all fields");
-        return;
-    }
-    console.log("Generating workout...");
-
-    const workout = new Workout(level, goal, exerciseType, weightInput.value);
-})
-
