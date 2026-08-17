@@ -1,7 +1,7 @@
 let level = "";
 let goal = "";
 let weight;
-
+let exerciseType = "";
 const container_level = document.querySelectorAll(".level-btns button");
 const container_goal = document.querySelectorAll(".Fitness-btn button");
 const container_exercise = document.querySelectorAll(".exercise-btn button");
@@ -368,22 +368,32 @@ const exercises = [
         expert:       { fatloss: "4x40", hypertrophy: "4x25" }
     }
 }]
-
 ];
+
+let cards = document.querySelectorAll(".card");
 let heading = document.querySelectorAll(".title");
 let sets = document.querySelectorAll(".sets");
 let reps = document.querySelectorAll(".reps");
+let start = document.querySelector(".get-started-btn");
+let count;
 
-let count = -3;
 function generateOutput(result) {
   count += 3;
-  for (let i = 0; i < result.length; i++) {
-    heading[count + i].innerText = result[i].name;
-    let setDetails = result[i].sets[level][goal];
-    let valueCount = setDetails.split("x");
-    console.log(`Sets and reps for ${result[i].name}:`, valueCount);
-    sets[count + i].innerText = valueCount[0];
-    reps[count + i].innerText = valueCount[1];
+  for (let i = 0; i < 3; i++) {
+    let card = cards[count + i]; 
+
+    if (i < result.length) {
+      card.classList.remove("card-hide");
+      heading[count + i].innerText = result[i].name;
+      let setDetails = result[i].sets[level][goal];
+      let valueCount = setDetails.split("x");
+      console.log(`Sets and reps for ${result[i].name}:`, valueCount);
+      sets[count + i].innerText = valueCount[0];
+      reps[count + i].innerText = valueCount[1];
+    }
+    else {
+      card.classList.add("card-hide");
+    }
   }
 }
 
@@ -392,6 +402,7 @@ function Workout(level, goal, type, weight) {
   this.goal = goal;
   this.type = type;
   this.weight = weight;
+  count = -3;
 
   const Muscle = {
     Chest: chest,
@@ -414,13 +425,17 @@ function Workout(level, goal, type, weight) {
       console.log(`Selected exercises for ${muscle}:`, result.slice(0, 3));
       generateOutput(result.slice(0, 3));
     }
-    
   }
-
+  document.querySelector("#results-section").scrollIntoView({ behavior: "smooth"});
 }
 
+start.addEventListener("click", (e) => {
+  document.querySelector("#input-section").scrollIntoView({ behavior: "smooth"});
+})
+
+
 container_level.forEach(button => {
-    button.addEventListener("click", (e) => {
+    button.addEventListener("click", () => {
         container_level.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
         level = button.id;
@@ -429,7 +444,7 @@ container_level.forEach(button => {
 })
 
 container_goal.forEach(button => {
-    button.addEventListener("click", (e) => {
+    button.addEventListener("click", () => {
         container_goal.forEach(btn => btn.classList.remove("active"));
         button.classList.add("active");
         goal = button.id;
@@ -438,7 +453,7 @@ container_goal.forEach(button => {
 })
 
 container_exercise.forEach(button => {
-    button.addEventListener("click", (e) => {
+    button.addEventListener("click", () => {
       container_exercise.forEach(btn => btn.classList.remove("active"));
       button.classList.add("active");
       exerciseType = button.id;
@@ -448,13 +463,17 @@ container_exercise.forEach(button => {
 let generateBtn = document.getElementById("generate-btn");
 let weightInput = document.getElementById("weight");
 
-generateBtn.addEventListener("click", (e) => {
-    if (weightInput.value === "" || level === "" || goal === "") {
+generateBtn.addEventListener("click", () => {
+    if (weightInput.value === "" || level === "" || goal === "" || exerciseType === "") {
         alert("Please fill in all fields");
         return;
     }
     console.log("Generating workout...");
-
-    const workout = new Workout(level, goal, exerciseType, weightInput.value);
+    document.querySelector("#loading").classList.add("visible");
+    setTimeout(() => {
+      document.querySelector("#loading").classList.remove("visible");
+      document.querySelector("#results-section").classList.add("visible");
+      const workout = new Workout(level, goal, exerciseType, weightInput.value);
+    } , 5000);  
 })
 
