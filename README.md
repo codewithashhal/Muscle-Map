@@ -185,4 +185,3 @@ This is only the first version, and I plan to continue improving it as I learn m
 **Muhammad Ashhal**
 
 Software Engineering Student
-LinkedIn: [Your LinkedIn Profile]
